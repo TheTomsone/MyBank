@@ -17,7 +17,8 @@ namespace MyBank.MyBank.Controllers
             Account savingAccount = new Saving(user);
             Console.WriteLine(savingAccount);
             Console.WriteLine("================================================");
-            savingAccount.Withdraw(50);
+            savingAccount.Deposit(50);
+            savingAccount.Withdraw(20);
             Console.WriteLine(savingAccount);
             Console.ReadKey();
         }

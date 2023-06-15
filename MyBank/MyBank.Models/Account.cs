@@ -81,8 +81,7 @@ namespace MyBank.MyBank.Models
         public override string ToString()
         {
             return $"Numéro de compte : {Number}\n----------\n" +
-                   $"Limite négative : -{Limit} EUR\n----------\n" +
-                   $"Solde : {Sold} EUR";
+                   $"Solde : {Sold} EUR\n----------\n";
         }
         public static decimal operator +(decimal value, Account account)
         {

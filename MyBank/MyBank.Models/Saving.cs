@@ -35,6 +35,7 @@ namespace MyBank.MyBank.Models
                 Console.ReadKey();
                 return;
             }
+            LastWithdrawDate = DateTime.Now;
             SetSoldTo(Sold - amount);
         }
         public override void Deposit(decimal amount)
@@ -46,6 +47,15 @@ namespace MyBank.MyBank.Models
                 return;
             }
             SetSoldTo(Sold + amount);
+        }
+
+        public override string ToString()
+        {
+            if (LastWithdrawDate == DateTime.MinValue)
+            {
+                return base.ToString() + "Dernier retrait : Auncun retrait enregistré";
+            }
+            return base.ToString() + $"Dernier retrait : {LastWithdrawDate}";
         }
 
 

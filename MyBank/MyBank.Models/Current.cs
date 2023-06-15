@@ -14,5 +14,10 @@ namespace MyBank.MyBank.Models
             Limit = 1000;
             User = user;
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + $"Limite négative : -{Limit} EUR";
+        }
     }
 }
