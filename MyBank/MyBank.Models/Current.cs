@@ -9,10 +9,18 @@ namespace MyBank.MyBank.Models
     public class Current : Account
     {
 
-        public Current(Users user)
+        private decimal _limit;
+        public decimal Limit
         {
-            Limit = 1000;
-            User = user;
+            get { return _limit; }
+            set
+            {
+                if (value < 0)
+                {
+                    return;
+                }
+                _limit = value;
+            }
         }
 
         public override string ToString()

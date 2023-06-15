@@ -16,37 +16,14 @@ namespace MyBank.MyBank.Models
             set { _lastWithdrawDate = value; }
         }
 
-        public Saving(Users user)
-        {
-            Limit = 0;
-            User = user;
-        }
         public override void Withdraw(decimal amount)
         {
-            if (amount < 0)
-            {
-                Console.Write("Impossible d'entrer un montant négatif...");
-                Console.ReadKey();
-                return;
-            }
-            if (Sold - amount < 0)
-            {
-                Console.Write("Vous êtes fauché ! Appuyez sur une touche...");
-                Console.ReadKey();
-                return;
-            }
-            LastWithdrawDate = DateTime.Now;
+            decimal oldSold = Sold;
             base.Withdraw(amount);
-        }
-        public override void Deposit(decimal amount)
-        {
-            if (amount < 0)
+            if (oldSold > Sold)
             {
-                Console.Write("Impossible d'entrer un montant négatif...");
-                Console.ReadKey();
-                return;
+                LastWithdrawDate = DateTime.Now;
             }
-            base.Deposit(amount);
         }
 
         public override string ToString()
