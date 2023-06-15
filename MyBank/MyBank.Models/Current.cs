@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyBank
+namespace MyBank.MyBank.Models
 {
     public class Current
     {
@@ -26,8 +26,8 @@ namespace MyBank
         public decimal Limit
         {
             get { return _limit; }
-            set 
-            { 
+            set
+            {
                 if (value < 0)
                 {
                     return;
@@ -44,7 +44,7 @@ namespace MyBank
         public Current(Users user)
         {
             Random r = new Random();
-            int number = r.Next(10,99);
+            int number = r.Next(10, 99);
             Number = $"BE{number} 0018 6831 5077";
             Sold = 0;
             Limit = 1000;
@@ -60,7 +60,7 @@ namespace MyBank
                 Console.ReadKey();
                 return;
             }
-            if (Sold - amount < -Limit )
+            if (Sold - amount < -Limit)
             {
                 Console.Write("Vous êtes fauché ! Appuyez sur une touche...");
                 Console.ReadKey();
@@ -84,9 +84,9 @@ namespace MyBank
                    $"Limite négative : -{Limit} EUR\n----------\n" +
                    $"Solde : {Sold} EUR";
         }
-        public static decimal operator +(decimal value, Current current2)
+        public static decimal operator +(decimal value, Current current)
         {
-            return value + current2.Sold;
+            return value + (current.Sold > 0 ? current.Sold : 0);
         }
     }
 }

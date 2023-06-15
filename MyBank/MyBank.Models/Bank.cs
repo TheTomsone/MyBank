@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyBank
+namespace MyBank.MyBank.Models
 {
     public class Bank
     {
@@ -53,7 +53,7 @@ namespace MyBank
             {
                 if (item.User == user)
                 {
-                    total = total + item.Sold;
+                    total += item;
                 }
             }
             return total;

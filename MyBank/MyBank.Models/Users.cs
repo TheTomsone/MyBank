@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyBank
+namespace MyBank.MyBank.Models
 {
     public class Users
     {
@@ -40,7 +41,14 @@ namespace MyBank
             DateTime date = new(year, month, day, hour, minute, second);
             return date;
         }
-
+        public static bool operator ==(Users user1, Users user2)
+        {
+            return user1.Name == user2.Name && user1.Firstname == user2.Firstname && user1.Birth == user2.Birth;
+        }
+        public static bool operator !=(Users user1, Users user2)
+        {
+            return !(user1 == user2);
+        }
         public override string ToString()
         {
             return $"Prénom : {Firstname}\t\t{Birth}\nNom    : {Name}";
