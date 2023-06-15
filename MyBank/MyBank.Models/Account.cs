@@ -48,10 +48,6 @@ namespace MyBank.MyBank.Models
             Number = $"BE{number} 0018 6831 5077";
             Sold = 0;
         }
-        public void SetSoldTo(decimal sold )
-        {
-            Sold = sold;
-        }
         public virtual void Withdraw(decimal amount)
         {
             if (amount < 0)

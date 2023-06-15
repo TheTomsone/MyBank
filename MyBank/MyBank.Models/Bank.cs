@@ -9,26 +9,26 @@ namespace MyBank.MyBank.Models
     public class Bank
     {
         string _name;
-        private Dictionary<string, Current> _currentsList;
+        private Dictionary<string, Account> _accountsList;
 
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
-        public Dictionary<string, Current> CurrentsList
+        public Dictionary<string, Account> AccountsList
         { 
             get
             {
-                return _currentsList ??= new Dictionary<string, Current>();
+                return _accountsList ??= new Dictionary<string, Account>();
             }
         }
 
-        public Current this[string number]
+        public Account this[string number]
         {
             get
             {
-                CurrentsList.TryGetValue(number, out Current current);
+                AccountsList.TryGetValue(number, out Account current);
                 return current;
             }
         }
@@ -38,18 +38,18 @@ namespace MyBank.MyBank.Models
             Name = name;
         }
 
-        public void Add(Current current)
+        public void Add(Account current)
         {
-            CurrentsList.Add(current.Number, current);
+            AccountsList.Add(current.Number, current);
         }
         public void Delete(string number)
         {
-            CurrentsList.Remove(number);
+            AccountsList.Remove(number);
         }
         public decimal TotalCurrents(Users user)
         {
             decimal total = 0;
-            foreach (Current item in CurrentsList.Values)
+            foreach (Account item in AccountsList.Values)
             {
                 if (item.User == user)
                 {
