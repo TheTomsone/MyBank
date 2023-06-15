@@ -11,7 +11,15 @@ namespace MyBank.MyBank.Controllers
     {
         public BankController()
         {
-            MainProgramLoop();
+            //MainProgramLoop();
+            Bank bank = new Bank("Mybank");
+            Users user = new Users();
+            Account savingAccount = new Saving(user);
+            Console.WriteLine(savingAccount);
+            Console.WriteLine("================================================");
+            savingAccount.Withdraw(50);
+            Console.WriteLine(savingAccount);
+            Console.ReadKey();
         }
 
         private void MainProgramLoop()
