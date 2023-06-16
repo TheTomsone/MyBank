@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBank.MyBank.Models
 {
-    public class Account
+    public abstract class Account
     {
         private string _number;
         private decimal _sold;
@@ -26,6 +26,11 @@ namespace MyBank.MyBank.Models
         {
             get { return _user; }
             set { _user = value; }
+        }
+        protected abstract decimal CalculatingInterest();
+        public void ApplyInterest()
+        {
+            Sold += CalculatingInterest();
         }
         public virtual void Withdraw(decimal amount)
         {

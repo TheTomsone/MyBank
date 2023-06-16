@@ -23,6 +23,20 @@ namespace MyBank.MyBank.Models
             }
         }
 
+        protected override decimal CalculatingInterest()
+        {
+            //if (Sold < 0)
+            //{
+            //    return Sold * (decimal)0.03;
+            //}
+            //return Sold * (decimal)0.0975;
+            return Sold * (Sold >= 0 ? 0.03M : .0975M);
+        }
+        public override void Withdraw(decimal amount)
+        {
+            base.Withdraw(amount, Limit);
+        }
+
         public override string ToString()
         {
             return base.ToString() + $"Limite négative : -{Limit} EUR";

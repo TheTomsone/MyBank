@@ -21,6 +21,21 @@ namespace MyBank.MyBank.Controllers
             savingAccount.Deposit(50);
             savingAccount.Withdraw(20);
             Console.WriteLine(savingAccount);
+            Console.WriteLine("================================================");
+            savingAccount.ApplyInterest();
+            Console.WriteLine(savingAccount);
+
+
+            Account currentAccount = new Current();
+            currentAccount.User = user;
+            Console.WriteLine(currentAccount);
+            Console.WriteLine("================================================");
+            currentAccount.Deposit(50);
+            currentAccount.Withdraw(20);
+            Console.WriteLine(currentAccount);
+            Console.WriteLine("================================================");
+            currentAccount.ApplyInterest();
+            Console.WriteLine(currentAccount);
             Console.ReadKey();
         }
 

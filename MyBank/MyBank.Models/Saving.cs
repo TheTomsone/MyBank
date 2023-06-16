@@ -16,6 +16,10 @@ namespace MyBank.MyBank.Models
             set { _lastWithdrawDate = value; }
         }
 
+        protected override decimal CalculatingInterest()
+        {
+            return Sold * (decimal)0.45;
+        }
         public override void Withdraw(decimal amount)
         {
             decimal oldSold = Sold;
