@@ -12,7 +12,7 @@ namespace MyBank.MyBank.Controllers
         public BankController()
         {
             //MainProgramLoop();
-            Bank bank = new Bank("Mybank");
+            Bank bank = new Bank();
             Users user = new Users();
             Account savingAccount = new Saving();
             savingAccount.User = user;
@@ -42,17 +42,13 @@ namespace MyBank.MyBank.Controllers
         private void MainProgramLoop()
         {
             bool isFinish = false;
-            Bank bank = new Bank("MyBank");
+            Bank bank = new Bank();
             Users user;
             Current current;
             while (!isFinish)
             {
                 decimal number;
                 Console.Clear();
-                foreach (string currentNum in bank.AccountsList.Keys)
-                {
-                    Console.WriteLine(DisplayUsersAccounts(currentNum));
-                }
                 KeyInput = Console.ReadKey(true).Key;
                 switch (KeyInput)
                 {
@@ -73,7 +69,7 @@ namespace MyBank.MyBank.Controllers
         private void CurrentLoop(Account account)
         {
             bool isFinish = false;
-            Bank bank = new Bank("MyBank");
+            Bank bank = new Bank();
             while (!isFinish)
             {
                 decimal number;
@@ -106,14 +102,6 @@ namespace MyBank.MyBank.Controllers
                 Console.Write(msg);
             } while (!decimal.TryParse(Console.ReadLine(), out number));
             return number;
-        }
-        private StringBuilder DisplayUsersAccounts(string number)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("- ");
-            sb.Append(number);
-            sb.AppendLine();
-            return sb;
         }
         private static StringBuilder DisplayAccount(Users user, Account account)
         {

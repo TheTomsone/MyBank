@@ -8,13 +8,11 @@ namespace MyBank.MyBank.Models
 {
     public class Bank
     {
-        string _name;
         private Dictionary<string, Account> _accountsList;
 
         public string Name
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return "MyBank"; }
         }
         public Dictionary<string, Account> AccountsList
         { 
@@ -31,11 +29,6 @@ namespace MyBank.MyBank.Models
                 AccountsList.TryGetValue(number, out Account current);
                 return current;
             }
-        }
-
-        public Bank(string name)
-        {
-            Name = name;
         }
 
         public void Add(Account current)
