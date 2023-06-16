@@ -12,30 +12,38 @@ namespace MyBank.MyBank.Controllers
         public BankController()
         {
             //MainProgramLoop();
-            Bank bank = new Bank();
-            Users user = new Users();
-            Account savingAccount = new Saving();
-            savingAccount.User = user;
-            Console.WriteLine(savingAccount);
-            Console.WriteLine("================================================");
-            savingAccount.Deposit(50);
-            savingAccount.Withdraw(20);
-            Console.WriteLine(savingAccount);
-            Console.WriteLine("================================================");
-            savingAccount.ApplyInterest();
-            Console.WriteLine(savingAccount);
+            //Bank bank = new Bank();
+            //Users user = new Users();
+            //Account savingAccount = new Saving();
+            //savingAccount.User = user;
+            //Console.WriteLine(savingAccount);
+            //Console.WriteLine("================================================");
+            //savingAccount.Deposit(50);
+            //savingAccount.Withdraw(20);
+            //Console.WriteLine(savingAccount);
+            //Console.WriteLine("================================================");
+            //savingAccount.ApplyInterest();
+            //Console.WriteLine(savingAccount);
 
 
-            Account currentAccount = new Current();
-            currentAccount.User = user;
+            //Account currentAccount = new Current();
+            //currentAccount.User = user;
+            //Console.WriteLine(currentAccount);
+            //Console.WriteLine("================================================");
+            //currentAccount.Deposit(50);
+            //currentAccount.Withdraw(20);
+            //Console.WriteLine(currentAccount);
+            //Console.WriteLine("================================================");
+            //currentAccount.ApplyInterest();
+            //Console.WriteLine(currentAccount);
+            Bank myBank = new Bank();
+            IBanker currentAccount = new Current()
+            {
+                User = new Users()
+            };
             Console.WriteLine(currentAccount);
-            Console.WriteLine("================================================");
-            currentAccount.Deposit(50);
-            currentAccount.Withdraw(20);
-            Console.WriteLine(currentAccount);
-            Console.WriteLine("================================================");
-            currentAccount.ApplyInterest();
-            Console.WriteLine(currentAccount);
+            
+
             Console.ReadKey();
         }
 

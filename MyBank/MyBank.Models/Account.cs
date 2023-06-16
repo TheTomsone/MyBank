@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBank.MyBank.Models
 {
-    public abstract class Account
+    public abstract class Account : ICustomer, IBanker
     {
         private string _number;
         private decimal _sold;
@@ -36,7 +36,7 @@ namespace MyBank.MyBank.Models
         {
             Withdraw(amount,0);
         }
-        public void Withdraw(decimal amount, decimal limit)
+        protected void Withdraw(decimal amount, decimal limit)
         {
             if (amount < 0)
             {
