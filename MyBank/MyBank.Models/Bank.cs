@@ -48,15 +48,16 @@ namespace MyBank.MyBank.Models
         }
         public decimal TotalCurrents(Users user)
         {
-            decimal total = 0;
-            foreach (Account item in AccountsList.Values)
-            {
-                if (item.User == user)
-                {
-                    total += item;
-                }
-            }
-            return total;
+            //decimal total = 0;
+            //foreach (Account item in AccountsList.Values)
+            //{
+            //    if (item.User == user)
+            //    {
+            //        total += item;
+            //    }
+            //}
+            //return total;
+            return AccountsList.Values.Where(item => item.User == user).Sum(item => item.Sold);
         }
     }
 }

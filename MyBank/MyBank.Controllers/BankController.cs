@@ -14,7 +14,8 @@ namespace MyBank.MyBank.Controllers
             //MainProgramLoop();
             Bank bank = new Bank("Mybank");
             Users user = new Users();
-            Account savingAccount = new Saving(user);
+            Account savingAccount = new Saving();
+            savingAccount.User = user;
             Console.WriteLine(savingAccount);
             Console.WriteLine("================================================");
             savingAccount.Deposit(50);
@@ -33,16 +34,17 @@ namespace MyBank.MyBank.Controllers
             {
                 decimal number;
                 Console.Clear();
-                foreach (string currentNum in bank.CurrentsList.Keys)
+                foreach (string currentNum in bank.AccountsList.Keys)
                 {
-                    Console.WriteLine(DisplayUsersCurrents(currentNum));
+                    Console.WriteLine(DisplayUsersAccounts(currentNum));
                 }
                 KeyInput = Console.ReadKey(true).Key;
                 switch (KeyInput)
                 {
                     case ConsoleKey.Insert:
                         user = new Users();
-                        current = new Current(user);
+                        current = new Current();
+                        current.User = user;
                         bank.Add(current);
                         break;
                     case ConsoleKey.Escape:
@@ -53,7 +55,7 @@ namespace MyBank.MyBank.Controllers
                 }
             }
         }
-        private void CurrentLoop(Current current)
+        private void CurrentLoop(Account account)
         {
             bool isFinish = false;
             Bank bank = new Bank("MyBank");
@@ -61,17 +63,17 @@ namespace MyBank.MyBank.Controllers
             {
                 decimal number;
                 Console.Clear();
-                Console.WriteLine(DisplayCurrent(bank.CurrentsList[current.Number].User, current));
+                Console.WriteLine(DisplayAccount(bank.AccountsList[account.Number].User, account));
                 KeyInput = Console.ReadKey(true).Key;
                 switch (KeyInput)
                 {
                     case ConsoleKey.Enter:
                         number = ReadDecimal("Entrez le montant à déposer >> ");
-                        current.Deposit(number);
+                        account.Deposit(number);
                         break;
                     case ConsoleKey.Delete:
                         number = ReadDecimal("Entrez le montant à retirer >> ");
-                        current.Withdraw(number);
+                        account.Withdraw(number);
                         break;
                     case ConsoleKey.Escape:
                         isFinish = true;
@@ -90,7 +92,7 @@ namespace MyBank.MyBank.Controllers
             } while (!decimal.TryParse(Console.ReadLine(), out number));
             return number;
         }
-        private StringBuilder DisplayUsersCurrents(string number)
+        private StringBuilder DisplayUsersAccounts(string number)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("- ");
@@ -98,14 +100,14 @@ namespace MyBank.MyBank.Controllers
             sb.AppendLine();
             return sb;
         }
-        private static StringBuilder DisplayCurrent(Users user, Current current)
+        private static StringBuilder DisplayAccount(Users user, Account account)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(user);
             sb.AppendLine();
             sb.Append('=', 50);
             sb.AppendLine();
-            sb.Append(current);
+            sb.Append(account);
             sb.AppendLine();
             sb.Append('=', 50);
             sb.AppendLine();
