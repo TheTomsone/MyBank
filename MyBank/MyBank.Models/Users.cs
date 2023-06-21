@@ -16,17 +16,17 @@ namespace MyBank.MyBank.Models
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            private set { _name = value; }
         }
         public string Firstname
         {
             get { return _firstname; }
-            set { _firstname = value; }
+            private set { _firstname = value; }
         }
         public DateTime Birth
         {
             get { return _birth; }
-            set { _birth = value; }
+            private set { _birth = value; }
         }
 
         public Users()

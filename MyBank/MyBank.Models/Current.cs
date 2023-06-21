@@ -13,7 +13,7 @@ namespace MyBank.MyBank.Models
         public decimal Limit
         {
             get { return _limit; }
-            set
+            private set
             {
                 if (value < 0)
                 {
@@ -21,6 +21,22 @@ namespace MyBank.MyBank.Models
                 }
                 _limit = value;
             }
+        }
+
+        public Current() { }
+        public Current(string number, Users user) : base(number, user)
+        {
+            Number = number;
+            User = user;
+        }
+
+        public Current(string number, Users user, decimal sold) : this(number, user)
+        {
+            SetSold(sold);
+        }
+        public Current(string number, decimal limit, Users user) : this(number, user)
+        {
+            Limit = limit;
         }
 
         protected override decimal CalculatingInterest()

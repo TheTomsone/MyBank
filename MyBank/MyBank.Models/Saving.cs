@@ -13,7 +13,21 @@ namespace MyBank.MyBank.Models
         public DateTime LastWithdrawDate
         {
             get { return _lastWithdrawDate; }
-            set { _lastWithdrawDate = value; }
+            private set { _lastWithdrawDate = value; }
+        }
+
+        public Saving() { }
+        public Saving(string number, Users user) : base(number, user)
+        {
+            Number = number;
+            User = user;
+        }
+
+        public Saving(string number, Users user, decimal sold) : base(number, user, sold)
+        {
+            Number = number;
+            User = user;
+            SetSold(sold);
         }
 
         protected override decimal CalculatingInterest()

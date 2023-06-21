@@ -37,10 +37,7 @@ namespace MyBank.MyBank.Controllers
             //currentAccount.ApplyInterest();
             //Console.WriteLine(currentAccount);
             Bank myBank = new Bank();
-            IBanker currentAccount = new Current()
-            {
-                User = new Users()
-            };
+            IBanker currentAccount = new Current("123", 500, new Users());
             Console.WriteLine(currentAccount);
             
 

@@ -27,6 +27,20 @@ namespace MyBank.MyBank.Models
             get { return _user; }
             set { _user = value; }
         }
+
+        public Account() { }
+        public Account(string number, Users user)
+        {
+            Number = number;
+            User = user;
+        }
+        public Account(string number, Users user, decimal sold)
+        {
+            Number = number;
+            User = user;
+            Sold = sold;
+        }
+
         protected abstract decimal CalculatingInterest();
         public void ApplyInterest()
         {
@@ -55,6 +69,10 @@ namespace MyBank.MyBank.Models
                 return;
             }
             Sold += amount;
+        }
+        public void SetSold(decimal value)
+        {
+            Sold = value;
         }
         public override string ToString()
         {
