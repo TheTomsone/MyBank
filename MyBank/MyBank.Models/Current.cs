@@ -17,7 +17,7 @@ namespace MyBank.MyBank.Models
             {
                 if (value < 0)
                 {
-                    return;
+                    throw new InvalidOperationException("Le montant de la ligne de crédit est inférieur à zéro !");
                 }
                 _limit = value;
             }
@@ -25,10 +25,7 @@ namespace MyBank.MyBank.Models
 
         public Current(string number, Users user) : base(number, user) { }
 
-        public Current(string number, Users user, decimal sold) : base(number, user, sold)
-        {
-            SetSold(sold);
-        }
+        public Current(string number, Users user, decimal sold) : base(number, user, sold) { }
         public Current(string number, decimal limit, Users user) : base(number, user)
         {
             Limit = limit;

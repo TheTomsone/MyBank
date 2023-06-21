@@ -38,6 +38,26 @@ namespace MyBank.MyBank.Controllers
             //Console.WriteLine(currentAccount);
             Bank myBank = new Bank();
             IBanker currentAccount = new Current("123", new Users(), 500);
+            try
+            {
+                currentAccount.Withdraw(-600);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (SoldException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             Console.WriteLine(currentAccount);
             
 

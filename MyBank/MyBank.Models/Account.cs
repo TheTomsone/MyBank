@@ -51,11 +51,11 @@ namespace MyBank.MyBank.Models
         {
             if (amount < 0)
             {
-                return;
+                throw new ArgumentOutOfRangeException("Le montant entré est inférieur à zéro !");
             }
             if (Sold - amount < -limit)
             {
-                return;
+                throw new SoldException("Le montant retiré doit être supérieur à la ligne de crédit");
             }
             Sold -= amount;
         }
@@ -63,7 +63,7 @@ namespace MyBank.MyBank.Models
         {
             if (amount < 0)
             {
-                return;
+                throw new ArgumentOutOfRangeException("Le montant est inférieur à zéro, impossible de faire un dépôt d'un montant négatif");
             }
             Sold += amount;
         }
