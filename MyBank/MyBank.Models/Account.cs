@@ -28,13 +28,12 @@ namespace MyBank.MyBank.Models
             set { _user = value; }
         }
 
-        public Account() { }
-        public Account(string number, Users user)
+        protected Account(string number, Users user)
         {
             Number = number;
             User = user;
         }
-        public Account(string number, Users user, decimal sold) : this(number, user)
+        protected Account(string number, Users user, decimal sold) : this(number, user)
         {
             Sold = sold;
         }

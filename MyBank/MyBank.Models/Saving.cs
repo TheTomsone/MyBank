@@ -16,17 +16,10 @@ namespace MyBank.MyBank.Models
             private set { _lastWithdrawDate = value; }
         }
 
-        public Saving() { }
-        public Saving(string number, Users user) : base(number, user)
-        {
-            Number = number;
-            User = user;
-        }
+        public Saving(string number, Users user) : base(number, user) { }
 
-        public Saving(string number, Users user, decimal sold) : base(number, user, sold)
+        public Saving(string number, Users user, decimal sold) : base(number, user)
         {
-            Number = number;
-            User = user;
             SetSold(sold);
         }
 

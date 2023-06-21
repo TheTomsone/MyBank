@@ -36,11 +36,6 @@ namespace MyBank.MyBank.Models
             Birth = ReadDateTime(ReadInt("JOUR >> "), ReadInt("MOIS >> "), ReadInt("ANNÉE >> "));
         }
 
-        public DateTime ReadDateTime(int day, int month, int year, int hour = 0, int minute = 0, int second = 0)
-        {
-            DateTime date = new(year, month, day, hour, minute, second);
-            return date;
-        }
         public static bool operator ==(Users user1, Users user2)
         {
             return user1.Name == user2.Name && user1.Firstname == user2.Firstname && user1.Birth == user2.Birth;
@@ -52,6 +47,11 @@ namespace MyBank.MyBank.Models
         public override string ToString()
         {
             return $"Prénom : {Firstname}\t\t{Birth}\nNom    : {Name}";
+        }
+        public DateTime ReadDateTime(int day, int month, int year, int hour = 0, int minute = 0, int second = 0)
+        {
+            DateTime date = new(year, month, day, hour, minute, second);
+            return date;
         }
         private int ReadInt(string msg = "Entrez un nombre >> ")
         {

@@ -23,18 +23,13 @@ namespace MyBank.MyBank.Models
             }
         }
 
-        public Current() { }
-        public Current(string number, Users user) : base(number, user)
-        {
-            Number = number;
-            User = user;
-        }
+        public Current(string number, Users user) : base(number, user) { }
 
-        public Current(string number, Users user, decimal sold) : this(number, user)
+        public Current(string number, Users user, decimal sold) : base(number, user, sold)
         {
             SetSold(sold);
         }
-        public Current(string number, decimal limit, Users user) : this(number, user)
+        public Current(string number, decimal limit, Users user) : base(number, user)
         {
             Limit = limit;
         }

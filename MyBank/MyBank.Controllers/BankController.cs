@@ -37,40 +37,40 @@ namespace MyBank.MyBank.Controllers
             //currentAccount.ApplyInterest();
             //Console.WriteLine(currentAccount);
             Bank myBank = new Bank();
-            IBanker currentAccount = new Current("123", 500, new Users());
+            IBanker currentAccount = new Current("123", new Users(), 500);
             Console.WriteLine(currentAccount);
             
 
             Console.ReadKey();
         }
 
-        private void MainProgramLoop()
-        {
-            bool isFinish = false;
-            Bank bank = new Bank();
-            Users user;
-            Current current;
-            while (!isFinish)
-            {
-                decimal number;
-                Console.Clear();
-                KeyInput = Console.ReadKey(true).Key;
-                switch (KeyInput)
-                {
-                    case ConsoleKey.Insert:
-                        user = new Users();
-                        current = new Current();
-                        current.User = user;
-                        bank.Add(current);
-                        break;
-                    case ConsoleKey.Escape:
-                        isFinish = true;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+        //private void MainProgramLoop()
+        //{
+        //    bool isFinish = false;
+        //    Bank bank = new Bank();
+        //    Users user;
+        //    Current current;
+        //    while (!isFinish)
+        //    {
+        //        decimal number;
+        //        Console.Clear();
+        //        KeyInput = Console.ReadKey(true).Key;
+        //        switch (KeyInput)
+        //        {
+        //            case ConsoleKey.Insert:
+        //                user = new Users();
+        //                current = new Current();
+        //                current.User = user;
+        //                bank.Add(current);
+        //                break;
+        //            case ConsoleKey.Escape:
+        //                isFinish = true;
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //}
         private void CurrentLoop(Account account)
         {
             bool isFinish = false;
