@@ -34,10 +34,8 @@ namespace MyBank.MyBank.Models
             Number = number;
             User = user;
         }
-        public Account(string number, Users user, decimal sold)
+        public Account(string number, Users user, decimal sold) : this(number, user)
         {
-            Number = number;
-            User = user;
             Sold = sold;
         }
 
