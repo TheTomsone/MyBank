@@ -42,6 +42,10 @@ namespace MyBank.MyBank.Models
         }
         public override void Withdraw(decimal amount)
         {
+            if (Sold >= 0 && Sold - amount < 0)
+            {
+                RaiseBelowZeroEvent(this);
+            }
             base.Withdraw(amount, Limit);
         }
 

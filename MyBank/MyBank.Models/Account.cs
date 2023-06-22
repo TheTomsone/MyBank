@@ -12,6 +12,8 @@ namespace MyBank.MyBank.Models
         private decimal _sold;
         private Users _user;
 
+        public event Action<Account> BelowZeroEvent;
+
         public string Number
         {
             get { return _number; }
@@ -70,6 +72,11 @@ namespace MyBank.MyBank.Models
         public void SetSold(decimal value)
         {
             Sold = value;
+        }
+
+        public void RaiseBelowZeroEvent(Account a)
+        {
+            BelowZeroEvent?.Invoke(a);
         }
         public override string ToString()
         {

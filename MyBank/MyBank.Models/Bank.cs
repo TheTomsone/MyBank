@@ -34,6 +34,7 @@ namespace MyBank.MyBank.Models
         public void Add(Account current)
         {
             AccountsList.Add(current.Number, current);
+            current.BelowZeroEvent += this.BelowZeroAction;
         }
         public void Delete(string number)
         {
@@ -51,6 +52,10 @@ namespace MyBank.MyBank.Models
             //}
             //return total;
             return AccountsList.Values.Where(item => item.User == user).Sum(item => item.Sold);
+        }
+        public void BelowZeroAction(Account a)
+        {
+            Console.WriteLine($"Le compte {a.Number} vient de passer en négatif");
         }
     }
 }
