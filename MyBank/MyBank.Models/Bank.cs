@@ -33,8 +33,8 @@ namespace MyBank.MyBank.Models
 
         public void Add(Account current)
         {
+            current.BelowZeroEvent += BelowZeroAction;
             AccountsList.Add(current.Number, current);
-            current.BelowZeroEvent += this.BelowZeroAction;
         }
         public void Delete(string number)
         {

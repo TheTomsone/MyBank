@@ -74,9 +74,9 @@ namespace MyBank.MyBank.Models
             Sold = value;
         }
 
-        public void RaiseBelowZeroEvent(Account a)
+        protected void RaiseBelowZeroEvent()
         {
-            BelowZeroEvent?.Invoke(a);
+            BelowZeroEvent?.Invoke(this);
         }
         public override string ToString()
         {

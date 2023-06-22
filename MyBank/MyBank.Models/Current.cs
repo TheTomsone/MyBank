@@ -42,11 +42,12 @@ namespace MyBank.MyBank.Models
         }
         public override void Withdraw(decimal amount)
         {
-            if (Sold >= 0 && Sold - amount < 0)
-            {
-                RaiseBelowZeroEvent(this);
-            }
+            bool isPositive = Sold >= 0;
             base.Withdraw(amount, Limit);
+            if (isPositive && Sold < 0)
+            {
+                RaiseBelowZeroEvent();
+            }
         }
 
         public override string ToString()
